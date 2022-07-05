@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/activity_add.xml" value="0.358695652173913" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/activity_add2.xml" value="0.3484375" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/activity_main2.xml" value="0.358695652173913" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/activity_view.xml" value="0.18541666666666667" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/my_row.xml" value="0.18568840579710144" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/layout/my_row2.xml" value="0.358695652173913" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/menu/my_menu.xml" value="0.3625" />
+        <entry key="..\:/Programming/Android Project Part 2/Android/app/src/main/res/menu/my_menu2.xml" value="0.3625" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_add.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_add_image_card.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_image_card_view.xml" value="0.18541666666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_image_view.xml" value="0.17135416666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_main.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_main2.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_test.xml" value="0.18541666666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_update.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_update_image.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/activity_view.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Project Part 3/Android/app/src/main/res/layout/my_row.xml" value="0.5" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/layout/activity_add.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/layout/activity_update.xml" value="0.3026041666666667" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/layout/activity_view.xml" value="0.3484375" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/layout/my_row.xml" value="0.5" />
+        <entry key="..\:/Programming/Android Projects/Android/app/src/main/res/menu/my_menu.xml" value="0.3625" />
+        <entry key="..\:/Programming/Android/app/src/main/res/layout/activity_add.xml" value="0.3484375" />
+        <entry key="..\:/Programming/Android/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Programming/Android/app/src/main/res/layout/activity_update.xml" value="0.3509963768115942" />
+        <entry key="..\:/Programming/Android/app/src/main/res/layout/my_row.xml" value="0.29444444444444445" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

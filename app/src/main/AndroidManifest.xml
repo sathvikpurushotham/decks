@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.library">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FlashCards"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Library"
+        tools:targetApi="31">
+        <activity
+            android:name=".Test"
+            android:exported="false"
+            android:parentActivityName=".ImageCardView"/>
+        <activity
+            android:name=".UpdateImageActivity"
+            android:exported="false"
+
+            android:parentActivityName=".ImageCardView" />
+        <activity
+            android:name=".ImageCardView"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddImageCard"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".AddActivity2"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity2" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:label="Decks">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ViewActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false"
+            android:label="Add card"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="FlashCards"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity2" />
+    </application>
+
+</manifest>
