@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.lang.reflect.Field;
 
 public class ImageCardView extends AppCompatActivity {
     TextView questiontv,counttv;
@@ -85,7 +87,13 @@ public class ImageCardView extends AppCompatActivity {
 
             questiontv.setText(title);
             MyDatabaseHelper mydb= new MyDatabaseHelper(ImageCardView.this);
-
+            try {
+                Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+                field.setAccessible(true);
+                field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             bytesImage= mydb.readImageTable1(id);
             if (bytesImage!=null)
             {

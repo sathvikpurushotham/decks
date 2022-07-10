@@ -66,7 +66,7 @@ public class AddImageCard extends AppCompatActivity {
                 else
                 {
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    selectedImageBitmap.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream);
+                    selectedImageBitmap.compress(Bitmap.CompressFormat.PNG, 10, byteArrayOutputStream);
                     byte[] bytesImage = byteArrayOutputStream.toByteArray();
                     MyDatabaseHelper myDB= new MyDatabaseHelper(AddImageCard.this);
                     myDB.addImageCard(title.getText().toString().trim(),bytesImage,0,pid);

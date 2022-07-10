@@ -3,16 +3,19 @@ package com.example.library;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorWindow;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Field;
+
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    private static final String DATABASE_NAME= "flashcard4.db";
+    private static final String DATABASE_NAME= "flashcard5.db";
     private static final int DATABASE_VERSION=1;
     private static final String PARENT_TABLE_NAME= "decks";
     private static final String PARENT_COLUMN_ID= "_id";
@@ -36,7 +39,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
+    public void onOpen(SQLiteDatabase db){
+        super.onOpen(db);
+        db.execSQL("PRAGMA foreign_keys=ON");
+    }
+
+    @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("PRAGMA foreign_keys=ON");
         String query= "CREATE TABLE "+ PARENT_TABLE_NAME+ " ("+PARENT_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + PARENT_TITLE + " TEXT );";
         db.execSQL(query);
@@ -44,14 +54,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                                 + COLUMN_TITLE + " TEXT, "
                                 + COLUMN_ANSWER + " TEXT, "
                                 + COLUMN_COUNT +  " INTEGER ,"
-                                + COLUMN_REFER+ " INTEGER REFERENCES "+ PARENT_TABLE_NAME+" ( "+ PARENT_COLUMN_ID +" )"
+                                + COLUMN_REFER+ " INTEGER REFERENCES "+ PARENT_TABLE_NAME+" ( "+ PARENT_COLUMN_ID +" ) ON DELETE CASCADE"
                                 +");";
         db.execSQL(query1);
         String query2= "CREATE TABLE "+ IMAGE_CARD_TABLE+ " ("+IMG_TABLE_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + IMG_TABLE_TITLE + " TEXT, "
                 + IMG_TABLE_IMAGE + " BLOB, "
                 + COLUMN_COUNT +  " INTEGER ,"
-                + COLUMN_REFER+ " INTEGER REFERENCES "+ PARENT_TABLE_NAME+" ( "+ PARENT_COLUMN_ID +" )"
+                + COLUMN_REFER+ " INTEGER REFERENCES "+ PARENT_TABLE_NAME+" ( "+ PARENT_COLUMN_ID +" ) ON DELETE CASCADE"
                 +");";
         db.execSQL(query2);
     }
@@ -264,6 +274,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery(query,null);
         byte[] bytesImage=null;
         try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
             cursor.moveToFirst();
             bytesImage = cursor.getBlob(2);
             cursor.close();
@@ -332,6 +349,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db= this.getWritableDatabase();
         db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid));
+        db.execSQL("DELETE FROM "+IMAGE_CARD_TABLE+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid));
     }
     void deleteDeck(String row_id)
     {
@@ -350,5 +368,49 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db= this.getWritableDatabase();
         db.execSQL("DELETE FROM "+PARENT_TABLE_NAME);
+    }
+    Cursor ViewAll(String pid)
+    {
+        String query= "SELECT * FROM "+TABLE_NAME+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid) +" UNION "+ "SELECT * FROM "+IMAGE_CARD_TABLE +" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid)+" ORDER BY "+COLUMN_COUNT;
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= null;
+        if(db!=null)
+        {
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+    Cursor ViewAllDesc(String pid)
+    {
+        String query= "SELECT * FROM "+TABLE_NAME+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid) +" UNION "+ "SELECT * FROM "+IMAGE_CARD_TABLE +" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid)+" ORDER BY "+COLUMN_COUNT+" DESC ";
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= null;
+        if(db!=null)
+        {
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+    Cursor ViewAllIdDefault(String pid)
+    {
+        String query= "SELECT * FROM "+TABLE_NAME+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid) +" UNION "+ "SELECT * FROM "+IMAGE_CARD_TABLE +" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid)+" ORDER BY "+COLUMN_ID;
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= null;
+        if(db!=null)
+        {
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+    Cursor ViewAllIdDesc(String pid)
+    {
+        String query= "SELECT * FROM "+TABLE_NAME+" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid) +" UNION "+ "SELECT * FROM "+IMAGE_CARD_TABLE +" WHERE "+COLUMN_REFER +" = " +Integer.valueOf(pid)+" ORDER BY "+COLUMN_ID+" DESC ";
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= null;
+        if(db!=null)
+        {
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
     }
 }

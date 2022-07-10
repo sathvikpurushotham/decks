@@ -63,6 +63,7 @@ public class UpdateImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 confirmDialog();
+
             }
         });
     }
@@ -83,7 +84,6 @@ public class UpdateImageActivity extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         });
         builder.create().show();

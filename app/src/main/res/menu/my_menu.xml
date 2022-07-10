@@ -16,10 +16,16 @@
         android:title="Sort by Count Desc">
     </item>
     <item
+        android:id="@+id/sort4"
+        android:icon="@drawable/ic_sort"
+        android:title="Sort by First Added">
+    </item>
+    <item
         android:id="@+id/sort3"
         android:icon="@drawable/ic_sort"
         android:title="Sort by Last Added">
     </item>
+
     <item
         android:id="@+id/delete_all"
         android:icon="@drawable/ic_delete"
