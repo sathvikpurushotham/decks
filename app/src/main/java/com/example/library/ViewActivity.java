@@ -31,7 +31,7 @@ public class ViewActivity extends AppCompatActivity {
                 count=String.valueOf(0);
                 MyDatabaseHelper mydb= new MyDatabaseHelper(ViewActivity.this);
                 mydb.updateData(id,title,answer,0);
-                counttv.setText(count);
+                counttv.setText("Count: "+count);
             }
         });
 
@@ -44,7 +44,7 @@ public class ViewActivity extends AppCompatActivity {
                 int c=Integer.valueOf(count)+1;
                 count=String.valueOf(c);
                 mydb.updateData2(id,title,answer,c);
-                counttv.setText(count);
+                counttv.setText("Count: "+count);
                 reveal.setEnabled(false);
             }
         });
@@ -70,8 +70,8 @@ public class ViewActivity extends AppCompatActivity {
             answer=getIntent().getStringExtra("answer");
             count=getIntent().getStringExtra("count");
 
-            questiontv.setText(title);
-            answertv.setText(answer);
+            questiontv.setText("Question: "+title);
+            answertv.setText("Answer: "+answer);
 
         }
         else

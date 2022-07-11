@@ -308,6 +308,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show();
         }
     }
+    void resetCountImgTable(String rid)
+    {
+        String query= "UPDATE "+IMAGE_CARD_TABLE+ " SET "+IMG_COLUMN_COUNT+ " = "+ Integer.valueOf(0) +" WHERE "+IMG_TABLE_ID+" = " +Integer.valueOf(rid);
+        SQLiteDatabase db= this.getWritableDatabase();
+        db.execSQL(query);
+    }
     void updateData2(String row_id,String title, String answer, int count)
     {
         SQLiteDatabase db= this.getWritableDatabase();

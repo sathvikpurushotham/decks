@@ -38,14 +38,12 @@
                 android:id="@+id/card_title_txt_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:maxLines="1"
-                android:text="Title"
+                android:text="Book Title"
                 android:textColor="#000000"
                 android:textSize="26sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

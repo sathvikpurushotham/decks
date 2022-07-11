@@ -92,6 +92,7 @@ public class AddImageCard extends AppCompatActivity {
                         catch (IOException e) {
                             e.printStackTrace();
                         }
+                        imgView.setVisibility(View.VISIBLE);
                         imgView.setImageBitmap(selectedImageBitmap);
                     }
                 }

@@ -47,7 +47,7 @@ public class ImageCardView extends AppCompatActivity {
                 int c=Integer.valueOf(count)+1;
                 count=String.valueOf(c);
                 mydb.updateImageCard1(title,bytesImage,c,id);
-                counttv.setText(count);
+                counttv.setText("Count: "+count);
                 reveal.setEnabled(false);
             }
         });
@@ -66,12 +66,25 @@ public class ImageCardView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ImageCardView.this, Test.class);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] bytes = stream.toByteArray();
-                intent.putExtra("BMP",bytes);
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                byte[] bytes = stream.toByteArray();
+//                intent.putExtra("BMP",bytes);
+//                intent.putExtra("title",String.valueOf(title));
+                intent.putExtra("id",String.valueOf(id));
                 intent.putExtra("title",String.valueOf(title));
+//                intent.putExtra("answer",String.valueOf(answer));
+                intent.putExtra("count",String.valueOf(count));
                 startActivity(intent);
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=String.valueOf(0);
+                MyDatabaseHelper mydb= new MyDatabaseHelper(ImageCardView.this);
+                mydb.resetCountImgTable(id);
+                counttv.setText("Count: "+count);
             }
         });
     }
@@ -85,7 +98,7 @@ public class ImageCardView extends AppCompatActivity {
 //            answer=getIntent().getStringExtra("answer");
             count=getIntent().getStringExtra("count");
 
-            questiontv.setText(title);
+            questiontv.setText("Question: "+title);
             MyDatabaseHelper mydb= new MyDatabaseHelper(ImageCardView.this);
             try {
                 Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
