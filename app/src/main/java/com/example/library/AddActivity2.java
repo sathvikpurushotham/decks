@@ -2,6 +2,7 @@ package com.example.library;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -35,6 +36,9 @@ public class AddActivity2 extends AppCompatActivity {
                 {
                     MyDatabaseHelper myDB= new MyDatabaseHelper(AddActivity2.this);
                     myDB.addDeck(titleInput.getText().toString().trim());
+                    finish();
+                    Intent intent= new Intent( AddActivity2.this,MainActivity2.class );
+                    startActivity(intent);
                 }
 
             }

@@ -57,6 +57,7 @@ public class ViewActivity extends AppCompatActivity {
                 intent.putExtra("answer",String.valueOf(answer));
                 intent.putExtra("count",String.valueOf(count));
                 startActivity(intent);
+                finish();
             }
         });
     }

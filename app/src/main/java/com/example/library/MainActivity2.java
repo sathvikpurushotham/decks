@@ -43,6 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity2.this, AddActivity2.class );
                 startActivity(intent);
+
             }
         });
 
@@ -53,6 +54,7 @@ public class MainActivity2 extends AppCompatActivity {
         customAdapter= new CustomAdapter2(MainActivity2.this,this,deckId,deckTitle);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
+
     }
 
     @Override

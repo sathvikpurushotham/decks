@@ -20,7 +20,7 @@
         <activity
             android:name=".UpdateImageActivity"
             android:exported="false"
-
+            android:label="Update card"
             android:parentActivityName=".ImageCardView" />
         <activity
             android:name=".ImageCardView"
@@ -30,10 +30,12 @@
         <activity
             android:name=".AddImageCard"
             android:exported="false"
+            android:label="Add Image card"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AddActivity2"
             android:exported="false"
+            android:label="Add Deck"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity2" />
         <activity
@@ -54,6 +56,7 @@
         <activity
             android:name=".UpdateActivity"
             android:exported="false"
+            android:label="Update card"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity

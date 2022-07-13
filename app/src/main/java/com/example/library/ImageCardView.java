@@ -60,6 +60,7 @@ public class ImageCardView extends AppCompatActivity {
 //                intent.putExtra("answer",String.valueOf(answer));
                 intent.putExtra("count",String.valueOf(count));
                 startActivity(intent);
+                finish();
             }
         });
         imgView.setOnClickListener(new View.OnClickListener() {

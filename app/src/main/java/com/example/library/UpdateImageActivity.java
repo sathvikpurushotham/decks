@@ -30,8 +30,8 @@ public class UpdateImageActivity extends AppCompatActivity {
     Bitmap selectedImageBitmap = null;
     String pid,ptitle;
     String title,id,count;
-    byte [] bytesImage;
-    byte[] bytesImage1;
+    byte [] bytesImage=null;
+    byte[] bytesImage1=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,16 @@ public class UpdateImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MyDatabaseHelper mydb= new MyDatabaseHelper(UpdateImageActivity.this);
-                mydb.updateImageCard(title,bytesImage1,Integer.valueOf(count),id);
+                if(bytesImage1!=null)
+                {
+                    mydb.updateImageCard(titletv.getText().toString(),bytesImage1,Integer.valueOf(count),id);
+                    Toast.makeText(UpdateImageActivity.this, "Successfully updated", Toast.LENGTH_SHORT).show();
+                }
+                else if(bytesImage!=null)
+                {
+                    mydb.updateImageCard(titletv.getText().toString(),bytesImage,Integer.valueOf(count),id);
+                    Toast.makeText(UpdateImageActivity.this, "Successfully updated", Toast.LENGTH_SHORT).show();
+                }
                 finish();
             }
         });
@@ -111,9 +120,6 @@ public class UpdateImageActivity extends AppCompatActivity {
             {
                 Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
             }
-
-
-
         }
         else
         {
